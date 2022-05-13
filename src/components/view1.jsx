@@ -4,8 +4,7 @@ import { Form, FormGroup, FormControl, Row, Col } from 'react-bootstrap';
 import Currency from './currency.jsx';
 import Buttons from './buttons.jsx';
 import { connect } from 'react-redux';
-import { Navigate, Route } from 'react-router-dom'
-
+import { withRouter } from 'react-router-dom';
 
 
 
@@ -34,12 +33,7 @@ class View1 extends Component{
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.currView !== this.props.currView) {
-            console.log(this.props);
-             <Route path="*" element={<Navigate to ="/products" />}/>
-
-
-
-
+            this.props.history.push(this.props.currView);
 
         }
     }
@@ -106,5 +100,5 @@ const mapStateToProps =state => {
 };
 
 
-export default connect(mapStateToProps)(View1);
+export default withRouter(connect(mapStateToProps)(View1));
 

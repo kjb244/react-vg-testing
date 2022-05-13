@@ -26,6 +26,13 @@ class View2 extends Component{
         }
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.currView !== this.props.currView) {
+            this.props.history.push(this.props.currView);
+
+        }
+    }
+
 
     changeFriend = (e) =>{
         this.setState({friend: e.target.value});

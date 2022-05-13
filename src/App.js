@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react'
-import { Routes, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import View1 from './components/view1.jsx';
 import View2 from './components/view2.jsx';
 import Container from 'react-bootstrap/Container';
@@ -13,11 +13,11 @@ function App() {
       <Container>
         <Row>
             <Col>
-              <Routes>
-                <Route  path='/view1' element={<View1/>}/>
-                <Route  path='/view2' element={<View2/>}/>
+              <Switch>
+                <Route  path='/view1' component={View1}/>
+                <Route  path='/view2' component={View2}/>
 
-              </Routes>
+              </Switch>
             </Col>
         </Row>
       </Container>
