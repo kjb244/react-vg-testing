@@ -8,7 +8,9 @@ class Reducer extends Component{
 
   initialState = {
     routes: ['view1','view2','view3'],
+    routeChange: new Date().getTime(),
     currView: null,
+    forwardOrBackClicked: null,
     routeMapping: {
       'view1': {
         next: 'view2',
@@ -16,32 +18,30 @@ class Reducer extends Component{
         formData: {}
       },
       'view2': {
-        next: 'view3',
+        next: null,
         prev: 'view1',
         formData: {}
       },
-      'view3': {
-        next: null,
-        prev: 'view2',
+      'splash': {
+        next: 'view1',
+        prev: null,
         formData: {}
       }
     }
   };
 
   mapToStateAndNextView = (newState, formValues, forwardOrBack) =>{
-    if (!newState.currView){
-      newState.currView = 'view1';
-    }
-    const currView = newState.currView;
+
+    const currView = window.location.pathname.replace('/','');
     const routeMapping = newState.routeMapping[currView];
     routeMapping.formData = formValues;
     const next = forwardOrBack === 'forward' ? routeMapping.next : routeMapping.prev;
     newState.currView = next;
+    newState.routeChange = new Date().getTime();
+    newState.forwardOrBackClicked = forwardOrBack;
 
 
-
-
-  }
+  };
 
 
   reducer = (state=this.initialState, action) => {
@@ -54,6 +54,11 @@ class Reducer extends Component{
       case 'CLICK_BACK':
         this.mapToStateAndNextView(newState, action.values, 'back');
         break;
+      case 'SPLASH_AJAX_COMPLETE':
+        this.mapToStateAndNextView(newState, {}, 'forward');
+        break;
+
+
 
 
     }

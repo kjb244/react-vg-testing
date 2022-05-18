@@ -32,7 +32,7 @@ class View1 extends Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.currView !== this.props.currView) {
+        if (prevProps.routeChange !== this.props.routeChange) {
             this.props.history.push(this.props.currView);
 
         }
@@ -94,11 +94,20 @@ class View1 extends Component{
 const mapStateToProps =state => {
     return{
         routes: state.routes,
+        routeChange: state.routeChange,
         currView: state.currView,
         routeMapping: state.routeMapping
     }
 };
 
 
-export default withRouter(connect(mapStateToProps)(View1));
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        clickForward: ()=> dispatch({type: 'SPLASH_MOVE_NEXT_ROUTE'})
+
+    }
+};
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps())(View1));
 

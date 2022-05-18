@@ -1,38 +1,56 @@
-.App {
-  text-align: center;
+html body{
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.transition-master{
+  position: relative;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.transition-master section{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.transition-master.forward .fade-appear,
+.transition-master.forward .fade-enter {
+  margin-left:150%;
+  z-index: 1;
+}
+.transition-master.forward .fade-appear-active,
+.transition-master.forward .fade-enter.fade-enter-active {
+  margin-left: 0;
+  transition: all 500ms;
 }
 
-.App-link {
-  color: #61dafb;
+.transition-master.forward .fade-exit {
+  margin-left:0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.transition-master.forward .fade-exit.fade-exit-active {
+  margin-left:-150%;
+  transition: all 500ms linear;
+}
+
+
+.transition-master.back .fade-appear,
+.transition-master.back .fade-enter {
+  margin-left:-150%;
+  z-index: 1;
+}
+.transition-master.back .fade-appear-active,
+.transition-master.back .fade-enter.fade-enter-active {
+  margin-left: 0;
+  transition: all 500ms;
+}
+
+.transition-master.back .fade-exit {
+  margin-left:0;
+}
+
+.transition-master.back .fade-exit.fade-exit-active {
+  margin-left:150%;
+  transition: all 500ms linear;
 }

@@ -27,7 +27,7 @@ class View2 extends Component{
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.currView !== this.props.currView) {
+        if (prevProps.routeChange !== this.props.routeChange) {
             this.props.history.push(this.props.currView);
 
         }
@@ -94,6 +94,7 @@ class View2 extends Component{
 const mapStateToProps =state => {
     return{
         routes: state.routes,
+        routeChange: state.routeChange,
         currView: state.currView,
         routeMapping: state.routeMapping
     }
