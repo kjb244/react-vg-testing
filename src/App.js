@@ -9,6 +9,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
 import { connect } from 'react-redux';
+import RouteWorker from "./components/route-worker";
 
 class App extends Component {
 
@@ -38,23 +39,25 @@ class App extends Component {
     render() {
         return (
             <Container>
+                <RouteWorker/>
                 <Row>
                     <Col className={this.masterClass()}>
-                        <BrowserRouter>
-                            <Route render={ ({location}) => {
-                                return (
-                                    <TransitionGroup>
-                                        <CSSTransition key={location.key} timeout={500} classNames="fade">
-                                            <Switch location={location}>
-                                                <Route  path='/splash' component={Splash}/>
-                                                <Route  path='/view1' component={View1}/>
-                                                <Route  path='/view2' component={View2}/>
-                                            </Switch>
-                                        </CSSTransition>
-                                    </TransitionGroup>
-                                )
-                            }}/>
-                        </BrowserRouter>
+
+                        <Route render={ ({location}) => {
+                            return (
+                                <TransitionGroup>
+                                    <CSSTransition key={location.key} timeout={500} classNames="fade">
+                                        <Switch location={location}>
+                                            <Route path='/splash' component={Splash}/>
+                                            <Route path='/view1' component={View1}/>
+                                            <Route path='/view2' component={View2}/>
+                                            <Redirect from ='*' to='/splash'/>
+                                        </Switch>
+                                    </CSSTransition>
+                                </TransitionGroup>
+                            );
+                        }}/>
+
                     </Col>
                 </Row>
             </Container>

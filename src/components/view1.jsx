@@ -31,13 +31,6 @@ class View1 extends Component{
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.routeChange !== this.props.routeChange) {
-            this.props.history.push(this.props.currView);
-
-        }
-    }
-
     changeFirstName = (e) =>{
         this.setState({firstName: e.target.value});
     };

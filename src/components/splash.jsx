@@ -27,12 +27,6 @@ class Splash extends Component{
         }
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if (prevProps.routeChange !== this.props.routeChange) {
-            this.props.history.push(this.props.currView);
-
-        }
-    }
 
     componentDidMount(){
         this.setState({showModal: true});
