@@ -35,6 +35,12 @@ class Buttons extends Component{
         }
     };
 
+    clickForward = () =>{
+        if(this.props.shouldSubmit() === true){
+            this.props.clickForward();
+        }
+    }
+
 
     render(){
 
@@ -43,7 +49,7 @@ class Buttons extends Component{
             <React.Fragment>
                 <Row className={'mt-3'}>
                     <Col xs={12}>
-                        <Button className={this.showForward()} variant="primary"  onClick={this.props.clickForward}>Forward</Button>
+                        <Button className={this.showForward()} variant="primary"  onClick={this.clickForward}>Forward</Button>
                         <Button className={this.showBack()}  style={{marginLeft: '8px'}} variant="primary" onClick={this.props.clickBack}>Back</Button>
                     </Col>
                 </Row>

@@ -15,9 +15,14 @@ class Currency extends Component{
 
     maskOnInput = (e) =>{
         const currencyHolder = this.maskInput(e.currentTarget.value);
-        this.props.onChange(currencyHolder);
+        e.target.value = currencyHolder;
+        this.props.onChange(e);
         this.setState({currency: currencyHolder});
     };
+
+    onBlur = (e) =>{
+        this.props.onBlur(e);
+    }
 
     maskInput = (valu) =>{
         let currencyHolder = valu;
@@ -45,9 +50,11 @@ class Currency extends Component{
             <React.Fragment>
                 <Form.Label>Amount</Form.Label>
                 <Form.Control type="text"
+                              name={this.props.name}
                               placeholder=""
                               value={this.state.currency}
                               onInput={this.maskOnInput}
+                              onBlur={this.onBlur}
                                 />
             </React.Fragment>
 
