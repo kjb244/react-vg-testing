@@ -210,7 +210,6 @@ class View1 extends Component{
 
                     <Buttons formData={{...this.state}} shouldSubmit={this.shouldSubmit}/>
                 </Form.Group>
-
             </section>
 
 

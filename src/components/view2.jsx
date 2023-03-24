@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Form, Row, Col, Button, Alert } from 'react-bootstrap';
 import Buttons from './buttons.jsx';
 import { connect } from 'react-redux';
+import {printNames} from "../utilities/react-utils";
 
 
 class View2 extends Component{
@@ -56,6 +57,13 @@ class View2 extends Component{
         return(
             <section>
                 <Form.Group>
+                    <Row>
+                        <Col className={"mt-3"}>
+                            <p>Printing Names from External Jsx</p>
+                            {printNames()}
+                        </Col>
+                    </Row>
+
                     <Row className={"mt-3"}>
                         <Col xs={12} sm={7}>
                             <div style={{display: 'flex'}} >
@@ -75,6 +83,7 @@ class View2 extends Component{
 
                     <Buttons formData={{...this.state}}/>
                 </Form.Group>
+
 
             </section>
 
